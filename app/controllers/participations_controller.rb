@@ -18,10 +18,18 @@ class ParticipationsController < ApplicationController
     @participation.user = current_user
     @participation.claim_id = params[:claim_id]
     @participation.author = false
+    @claim = Claim.find(params[:claim_id])
+
+    notice = 'Participation was successfully created.'
+    if !@claim.participations.nil? && @claim.participations.count == 9
+      require "application_mailer"
+      ApplicationMailer.send_mail_claim(@claim)
+      notice << '  Email send for 10th participant'
+    end
 
     respond_to do |format|
       if @participation.save
-        format.html{ redirect_to root_path, notice: 'Participation was successfully created.' }
+        format.html{ redirect_to root_path, notice: notice }
       else
         format.html{ redirect_to root_path, notice: 'Oops, you can\'t to this claim !' }
       end

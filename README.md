@@ -36,26 +36,8 @@ Features to do
 ---------------
  - Iteration 0
  - Iteration 1
-    - At administrator level :
-        - See all claims in Claims/Index
-        - Can delete all claims
-        - Can edit only his claims
-    - Create participation model to link users to claims
-    - Add ability to user to join himself to claim(s)
  - Iteration 2
-    - Add field state in claims model (enum  draft, published)
-        - The default state of a claim is draft
-        - Draft claims are visible only for the creator and administrators
-        - Creator can change the state of a claim
-
-    - Create claim revue model that contain claim_id, type (enum reject, improve) and content
-        - Messages are used by administrator when they reject a claim
-        - Only administrator can add/edit/delete messages
-        - The claim author see all his messages (but not the claim participants)
-
-    - Add a button to enable administrator to ask for modification of a claim
-        - Create a message for the claim
-        - Change claim state to draft
+    - , when a claim has been deleted or reviewed
 
 Changelog
 ---------------
@@ -79,6 +61,27 @@ Changelog
         - Has one or many issue picture evidence
         - Fix bug, user not displaying correctly in claims display
         - Claims tab show only current logged user claims unless he's admin
+  - Iteration 1
+      - At administrator level :
+          - See all claims in Claims/Index
+          - Can delete all claims
+          - Can edit only his claims
+      - Create participation model to link users to claims
+      - Add ability to user to join himself to claim(s)
+  - Iteration 2
+      - Add field state in claims model (enum  draft, published)
+          - The default state of a claim is draft
+          - Draft claims are visible only for the creator and administrators
+          - Creator can change the state of a claim
+      - Create claim review model that contain claim_id, type (enum reject, improve) and content
+          - Messages are used by administrator when they reject a claim
+          - Only administrator can add/edit/delete messages
+          - The claim author see all his messages (but not the claim participants)
+      - Added a button to enable administrator to ask for modification of a claim
+          - Create a message for the claim
+          - Change claim state to draft
+      - Added mail support
+        - Send mail when a claim has been joined by 10 users
 
 
 Documentation and Support

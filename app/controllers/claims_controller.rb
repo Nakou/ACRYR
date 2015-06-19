@@ -37,6 +37,7 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
+    @claim.mailSend = false
 
     @participation = Participation.new
     @participation.user = current_user

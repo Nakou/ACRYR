@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617100509) do
+ActiveRecord::Schema.define(version: 20150619130129) do
 
   create_table "claims", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150617100509) do
     t.datetime "updated_at",                null: false
     t.string   "picture",     limit: 255
     t.integer  "state",       limit: 4
+    t.boolean  "mailSend",    limit: 1
   end
 
   create_table "evidences", force: :cascade do |t|
