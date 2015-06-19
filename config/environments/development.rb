@@ -55,7 +55,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
    :address              => "mail.mines-ales.org",
@@ -65,4 +65,6 @@ Rails.application.configure do
    :authentication       => "plain",
    :enable_starttls_auto => true
   }
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail')}
 end

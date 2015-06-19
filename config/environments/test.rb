@@ -29,7 +29,13 @@ Rails.application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    :location => '/usr/sbin/sendmail',
+    :arguments => '-i -t'
+  }
+  config.action_mailer.file_settings = { :location => Rails.root.join('tmp/mail')}
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
@@ -39,4 +45,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #   :address              => "mail.mines-ales.org",
+  #   :port                 => 25,
+   #  :user_name            => "mabitemabitemabite",
+  #   :password             => "tameretameretamere",
+  #   :authentication       => "plain",
+  #   :enable_starttls_auto => false
+   #  }
+  config.action_mailer.perform_deliveries = true
 end
+#ActionMailer::Base.raise_delivery_errors = true
+#ActionMailer::Base.delivery_method = :smtp
+#ActionMailer::Base.perform_deliveries = true
+#:user_name            => "charles.coque",
+#:password             => "Newton012011",
